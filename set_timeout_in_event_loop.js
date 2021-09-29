@@ -7,7 +7,7 @@
 // https://www.voidcanvas.com/setimmediate-vs-nexttick-vs-settimeout/
 // https://www.educative.io/edpresso/setimmediate-vs-processnexttick-in-nodejs?aid=5082902844932096&utm_source=google&utm_medium=cpc&utm_campaign=edpresso-dynamic&utm_term=&utm_campaign=Dynamic+-+Edpresso&utm_source=adwords&utm_medium=ppc&hsa_acc=5451446008&hsa_cam=8092184362&hsa_grp=86276435689&hsa_ad=397226000870&hsa_src=g&hsa_tgt=dsa-837376625453&hsa_kw=&hsa_mt=b&hsa_net=adwords&hsa_ver=3&gclid=EAIaIQobChMI_MrO1tiX8wIV4J1LBR3cuQ6AEAAYASAAEgItf_D_BwE
 
-// // console.log('hi');
+// console.log('hi');
 // setTimeout(() => {
 //     console.log('first timeout');
 // }, 1000);
@@ -23,7 +23,7 @@
 // setTimeout(() => {
 //     console.log('fifth timeout');
 // }, 1000);
-// // console.log('end');
+// console.log('end');
 
 // const bar = () => console.log('bar');
 
@@ -35,15 +35,15 @@
 //   new Promise((resolve, reject) =>
 //     resolve('should be right after baz, before bar')
 //   ).then((resolve) => console.log(resolve));
-//   baz(1);
-//   baz(2);
-//   baz(3);
-//   new Promise((resolve, reject) =>
-//     resolve('2 should be right after baz, before bar')
-//   ).then((resolve) => console.log(resolve));
-//   baz(4);
-//   baz(5);
-//   baz(6);
+  // baz(1);
+  // baz(2);
+  // baz(3);
+  // new Promise((resolve, reject) =>
+  //   resolve('2 should be right after baz, before bar')
+  // ).then((resolve) => console.log(resolve));
+  // baz(4);
+  // baz(5);
+  // baz(6);
 // };
 
 // foo();
@@ -54,17 +54,17 @@
 // baz(9);
 
 
-// var promise = new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//         resolve('promise win')
-//     }, 4000)
-// })
-// promise.then((result) => {
-//     console.log(result)
-// })
-// setTimeout(() => {
-//     console.log('setTimeout win')
-// }, 4000)
+var promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('promise win')
+    }, 4000)
+})
+promise.then((result) => {
+    console.log(result)
+})
+setTimeout(() => {
+    console.log('setTimeout win')
+}, 4000)
 
 // All `thenable` callbacks of the promise are called first, then the setTimeout callback is called.
 
@@ -73,7 +73,7 @@
 
 // both the setTimeout and promise are executed asynchronously and both take same amount of time but promises 
 // are executed first then callback , this is because promise are move to job queue and setTimeout is moved to 
-// callBack queue from the Web Api which is basically create during javascript runtime to perform tasks 
+// callBack queue from the Web Api which is basically created during javascript runtime to perform tasks 
 // asynchronously and so Job Queue has priority over the task queue
 
 // every browser, open different loops for every tab
@@ -181,24 +181,24 @@
 // racer()
 
 
-let racer1 = function() {
-  setTimeout(() => console.log("timeout"), 0);
-  setImmediate(() => console.log("immediate"));
-  process.nextTick(() => console.log("nextTick"));
-}
+// let racer1 = function() {
+//   setTimeout(() => console.log("timeout"), 0);
+//   setImmediate(() => console.log("immediate"));
+//   process.nextTick(() => console.log("nextTick"));
+// }
 
-let racer2 = function() {
-  process.nextTick(() => console.log("nextTick"));
-  setTimeout(() => console.log("timeout"), 0);
-  setImmediate(() => console.log("immediate"));
-}
+// let racer2 = function() {
+//   process.nextTick(() => console.log("nextTick"));
+//   setTimeout(() => console.log("timeout"), 0);
+//   setImmediate(() => console.log("immediate"));
+// }
 
-let racer3 = function() {
-  setImmediate(() => console.log("immediate"));
-  process.nextTick(() => console.log("nextTick"));
-  setTimeout(() => console.log("timeout"), 0);
-}
+// let racer3 = function() {
+//   setImmediate(() => console.log("immediate"));
+//   process.nextTick(() => console.log("nextTick"));
+//   setTimeout(() => console.log("timeout"), 0);
+// }
 
-racer1()
-racer2()
-racer3()
+// racer1()
+// racer2()
+// racer3()
