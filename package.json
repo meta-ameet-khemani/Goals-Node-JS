@@ -1,0 +1,19 @@
+{
+  "name": "express_api_with_mongodb",
+  "version": "1.0.0",
+  "description": "A sample code which shows the use of mongodb with node in form of API",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
