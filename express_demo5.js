@@ -1,10 +1,39 @@
 // use of morgan package as logger in express
 
-const exp = require('express')();
+const express = require('express');
+const exp = express();
 const { products } = require('./data/test_data');
 const morgan = require('morgan');
 
+const stylus = require('stylus');
+const nib = require('nib');
+
+exp.use(express.urlencoded({extended: false}));
+
+// logging the incoming requests
 exp.use(morgan('tiny'));
+
+// directives for using jade template engine
+exp.set('views', __dirname + '/views');
+exp.set('view engine', 'jade');
+
+// middleware for stylus
+exp.use(stylus.middleware({
+    src: __dirname + '/public',
+    compile: compile
+    // compile: (str, path) => {
+    //     return stylus(str).set('filename', path).use(nib())
+    // }
+}));
+
+function compile(str, path) {
+return stylus(str)
+    .set('filename', path)
+    .use(nib());
+}
+
+exp.use(express.static(__dirname + '/public'));
+
 // GET /products 304 - - 6.344 ms
 
 // exp.use(morgan('combined'));
@@ -21,6 +50,19 @@ exp.use(morgan('tiny'));
 
 exp.get('/', (req, res) => {
     res.status(200).send('<a href=/products>Get All Products</a>');
+});
+
+exp.get('/jade', (req, res) => {
+    let currTime = new Date().toLocaleDateString() + ' - ' + new Date().toLocaleTimeString();
+    res.render('homepage', {currentTime: currTime});
+});
+
+exp.get('/form', (req, res) => {
+    res.status(200).send('<form action=/form_data method=POST> <label />Username <input type=text name=username /> <br /> <input type=submit value=Submit> </form>');
+});
+
+exp.post('/form_data', (req, res) => {
+    res.status(200).send(`Username : ${req.body.username}`);
 });
 
 exp.get('/products', (req, res) => {
