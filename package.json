@@ -1,0 +1,18 @@
+{
+  "name": "customers_app",
+  "version": "1.0.0",
+  "description": "A customer app to demo express with node",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "jade": "^1.11.0",
+    "mongoose": "^6.1.2",
+    "nodemon": "^2.0.15"
+  }
+}

@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Users
+    body 
+        h1 Users list
+        a(href="/form") Add
+        div 
+            table 
+                thead 
+                    tr: th Users 
+                tbody 
+                    each user in users 
+                        tr 
+                            td 
+                                =user.name 
+                            td 
+                                a(href="/user/delete/#{user.id}") delete 
+                                =user.id
+                                //- a(data-confirm="Are you sure?" data-method="delete" href="/user/1" rel="nofollow") Delete
+                                //- <a data-confirm="Are you sure?" data-method="delete" href="/link-to-resource" rel="nofollow">Delete</a>
