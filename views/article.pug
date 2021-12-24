@@ -1,0 +1,10 @@
+extends layout 
+
+block content 
+    h1= article.name 
+    h5 Written By #{article.author} 
+    p= article.decription
+    br
+    a.btn.btn-dark(href='/article/edit/' + article._id) Edit
+    ="  "
+    button.btn.btn-danger(onClick="dele('"+article._id+"')") Delete
