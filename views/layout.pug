@@ -30,6 +30,10 @@ html(lang="en")
                 //- form
                 //-     input.form-control(type='text' placeholder='Search' aria-label='Search')
         .container 
+            br
+            if errors 
+                each error, i in errors 
+                    div(class="alert alert-danger") #{error.msg} : #{error.param}
             block content 
             br
             hr

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { body, validationResult } = require('express-validator');
 
 let Article = require('../models/article');
 
@@ -22,18 +23,35 @@ router.get('/add', (req, res) => {
     });
 });
 
-router.post('/article', async (req, res) => {
-    if (Object.keys(req.body).length !== 0) {
-        await Article.create(req.body)
-            .then((article) => {
-                console.log('New article created: ', article);
-            })
-            .catch((err) => {
-                console.log('Error in creating new article: ', err);
-            });
+router.post(
+    '/article', 
+    body('name').notEmpty(),
+    body('author').notEmpty(),
+    body('decription').notEmpty(),
+    async (req, res) => {
+        if (Object.keys(req.body).length !== 0) {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                // return res.status(400).json({
+                //     success: false,
+                //     errors: errors.array()
+                // });
+                res.render('add', {
+                    title: 'Add Article',
+                    errors: errors.errors
+                });
+            }
+            await Article.create(req.body)
+                .then((article) => {
+                    console.log('New article created: ', article);
+                })
+                .catch((err) => {
+                    console.log('Error in creating new article: ', err);
+                });
+        }
+        res.redirect('/');
     }
-    res.redirect('/');
-});
+);
 
 router.get('/article/:id', async (req, res) => {
     try {
