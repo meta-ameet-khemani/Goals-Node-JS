@@ -1,0 +1,29 @@
+extends layout 
+
+block content 
+    h1 Register User
+    form(method='POST', action='/user')
+        #form-group
+            label Name 
+            input.form-control(name='name', type='text')
+        br
+        #form-group
+            label Email 
+            input.form-control(name='email', type='email')
+        br
+        #form-group
+            label Username 
+            input.form-control(name='username', type='text')
+        br
+        #form-group
+            label Password 
+            input.form-control(name='password', type='password')
+        br
+        #form-group
+            label Confirm Password 
+            input.form-control(name='confPassword', type='password')
+        br
+        input.btn.btn-primary(type='submit', value='Add')
+        ="  "
+        //- a.btn.btn-info(href='/') Cancel
+        button(class="btn btn-secondary", type='reset') Reset

@@ -24,7 +24,12 @@ html(lang="en")
                 #navbarsExample02.collapse.navbar-collapse
                 ul.navbar-nav.me-auto
                     li.nav-item
-                    a.nav-link.active(aria-current='page' href='/add') Add
+                    if user 
+                        a.nav-link.active(aria-current='page' href='/add') Add Article
+                        a.nav-link.active(aria-current='page' href='/user/logout') Logout
+                    else
+                        a.nav-link.active(aria-current='page' href='/user/register') Register
+                        a.nav-link.active(aria-current='page' href='/user/login') Login
                     li.nav-item
                 //-     a.nav-link(href='#') Link
                 //- form
