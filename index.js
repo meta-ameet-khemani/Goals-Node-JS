@@ -103,16 +103,6 @@ app.get('*', (req, res, next) => {
 app.use('/', articleRoutes);
 app.use('/user', userRoutes);
 
-// app.get('/login', function(req, res) {
-//     res.render('login', {message: req.flash('error')});
-// });
-
-// app.post('/login', passport.authenticate('local', {
-//     successRedirect : '/profile',
-//     failureRedirect : '/login',
-//     failureFlash : true
-// }));
-
 app.listen(3000, () => {
     console.log('Listening on port 3000 ...');
 });
