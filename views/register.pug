@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+    h1 Register Page
+    form(action='/user/register' method='POST')
+        br
+        label Username 
+        input(name='username', type='text')
+        br
+        br
+        label Password 
+        input(name='password', type='password')
+        br
+        br
+        button(type='submit') Register

@@ -1,0 +1,45 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Passport Authentication
+        link(rel='stylesheet', href='/bootstrap/bootstrap.css')
+        //- link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+        //- script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+        //- script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js')
+    body
+        nav.navbar.navbar-expand.navbar-dark.bg-dark(aria-label='Second navbar example')
+            .container-fluid
+                a.navbar-brand(href='/') ArticlesWorld
+                ul.navbar-nav.me-auto
+                    li.nav-item
+                    a.nav-link.active(aria-current='page' href='/') Homepage
+                    a.nav-link.active(aria-current='page' href='/user/login') Login
+                    a.nav-link.active(aria-current='page' href='/user/register') Register
+                    a.nav-link.active(aria-current='page' href='/user/logout') Logout
+                    a.nav-link.active(aria-current='page' href='/about') About
+        br
+        //- a(href='/')
+        //-     button(type='button') Homepage
+        //- br 
+        //- a(href='/user/login')
+        //-     button(type='button') Login
+        //- br
+        //- a(href='/user/register')
+        //-     button(type='button') Register
+        //- br
+        //- a(href='/user/logout')
+        //-     button(type='button') Logout 
+        //- br
+        //- a(href='/about')
+        //-     button(type='button') About
+        br
+        p= successMsg 
+        block content 
+        br
+        hr
+        footer 
+            p Copyright &copy; 2021
+    
